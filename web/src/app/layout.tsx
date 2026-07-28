@@ -2,6 +2,9 @@ import type {Metadata} from 'next'
 import localFont from 'next/font/local'
 import {Noto_Sans} from 'next/font/google'
 
+import {client} from '@/sanity/client'
+import {SITE_METADATA_QUERY} from '@/sanity/queries'
+
 import './globals.css'
 
 const deAetna = localFont({
@@ -17,17 +20,41 @@ const notoSans = Noto_Sans({
   display: 'swap',
 })
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000'
 
-export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
-  title: {
-    default: 'MassDOT Shelf',
-    template: '%s · MassDOT Shelf',
-  },
-  description:
-    'Summer 2026 work from The Lab at the Massachusetts Department of Transportation.',
+export async function generateMetadata(): Promise<Metadata> {
+  const settings = await client.fetch(SITE_METADATA_QUERY)
+  const siteTitle = settings?.siteTitle ?? 'MassDOT Shelf'
+  const description =
+    settings?.tagline ??
+    'Summer 2026 work from The Lab at the Massachusetts Department of Transportation.'
+  const socialImage = settings?.ogImage?.asset?.url
+  const favicon = settings?.favicon?.asset
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: {
+      default: siteTitle,
+      template: `%s · ${siteTitle}`,
+    },
+    description,
+    alternates: {
+      canonical: '/',
+    },
+    icons: {
+      icon: favicon?.url
+        ? [{url: favicon.url, type: favicon.mimeType ?? undefined}]
+        : [{url: '/favicon.svg', type: 'image/svg+xml'}],
+    },
+    openGraph: {
+      type: 'website',
+      title: siteTitle,
+      description,
+      url: siteUrl,
+      siteName: siteTitle,
+      images: socialImage ? [{url: socialImage}] : undefined,
+    },
+  }
 }
 
 export default function RootLayout({

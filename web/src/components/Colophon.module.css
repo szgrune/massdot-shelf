@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   gap: 2rem;
-  padding: 9vh 0 6vh;
+  padding: 24px 0 22px;
   border-top: 1px solid var(--rule);
   color: var(--ink-muted);
   font-size: 0.68rem;

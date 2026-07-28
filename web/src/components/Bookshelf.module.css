@@ -1,15 +1,16 @@
 .shelf {
+  position: relative;
   min-width: 0;
 }
 
 .itemRow {
   display: flex;
   align-items: flex-end;
-  min-height: 290px;
-  gap: clamp(12px, 2vw, 28px);
+  min-height: 207px;
+  gap: clamp(10px, 1.5vw, 20px);
   overflow-x: auto;
   overflow-y: hidden;
-  padding: 34px 26px 0 7px;
+  padding: 18px 20px 0;
   scrollbar-color: var(--rule) transparent;
   scrollbar-width: thin;
   scroll-snap-type: x proximity;
@@ -24,19 +25,25 @@
 }
 
 .label {
-  padding-top: 28px;
+  position: absolute;
+  z-index: 3;
+  top: 14px;
+  right: 20px;
+  max-width: min(46%, 32rem);
+  text-align: right;
 }
 
 .labelLine {
   display: flex;
   align-items: baseline;
+  justify-content: flex-end;
   gap: 0.8rem;
 }
 
 .label h2 {
   margin: 0;
   font-family: var(--font-deaetna), serif;
-  font-size: 0.96rem;
+  font-size: 0.82rem;
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -44,24 +51,28 @@
 
 .labelLine span {
   color: var(--ink-muted);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .label p {
-  margin: 0.45rem 0 0;
+  margin: 0.28rem 0 0;
   color: var(--ink-muted);
-  font-size: 0.76rem;
-  line-height: 1.5;
+  font-size: 0.68rem;
+  line-height: 1.35;
 }
 
 @media (max-width: 600px) {
   .itemRow {
-    min-height: 204px;
-    margin-right: -20px;
-    padding-top: 25px;
-    padding-right: 34px;
+    min-height: 197px;
+    padding: 54px 14px 0;
+  }
+
+  .label {
+    top: 11px;
+    right: 13px;
+    max-width: calc(100% - 26px);
   }
 }

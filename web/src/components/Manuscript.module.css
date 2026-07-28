@@ -3,8 +3,8 @@
   z-index: 1;
   display: block;
   flex: 0 0 auto;
-  width: clamp(156px, 18vw, 230px);
-  height: clamp(118px, 14vw, 184px);
+  width: clamp(132px, 12vw, 174px);
+  height: clamp(92px, 8.5vw, 120px);
   color: var(--ink);
   scroll-snap-align: start;
   text-decoration: none;
@@ -70,7 +70,7 @@
 .title {
   margin-top: 0.65rem;
   font-family: var(--font-deaetna), serif;
-  font-size: 1.17rem;
+  font-size: 0.96rem;
   line-height: 1.05;
   overflow-wrap: anywhere;
 }
@@ -118,7 +118,7 @@
 
 @media (max-width: 600px) {
   .title {
-    font-size: 1rem;
+    font-size: 0.84rem;
   }
 }
 

@@ -19,10 +19,12 @@ export default async function HomePage() {
       />
       <main>
         {shelves.length ? (
-          <div className={styles.shelves}>
-            {shelves.map((shelf) => (
-              <Bookshelf shelf={shelf} key={shelf._id} />
-            ))}
+          <div className={styles.cabinet}>
+            <div className={styles.shelves}>
+              {shelves.map((shelf) => (
+                <Bookshelf shelf={shelf} key={shelf._id} />
+              ))}
+            </div>
           </div>
         ) : (
           <p className={styles.empty}>

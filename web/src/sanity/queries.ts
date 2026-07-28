@@ -18,6 +18,39 @@ const coverImageFields = /* groq */ `
   hotspot
 `
 
+const projectImageFields = /* groq */ `
+  asset->{
+    _id,
+    url,
+    metadata {
+      lqip,
+      dimensions {
+        width,
+        height,
+        aspectRatio
+      }
+    }
+  },
+  crop,
+  hotspot
+`
+
+export const SITE_METADATA_QUERY = defineQuery(/* groq */ `
+  *[_id == "siteSettings"][0]{
+    siteTitle,
+    tagline,
+    ogImage{
+      ${projectImageFields}
+    },
+    favicon{
+      asset->{
+        url,
+        mimeType
+      }
+    }
+  }
+`)
+
 export const SHELF_PAGE_QUERY = defineQuery(/* groq */ `
   {
     "settings": *[_id == "siteSettings"][0]{
@@ -52,6 +85,52 @@ export const SHELF_PAGE_QUERY = defineQuery(/* groq */ `
             ${coverImageFields}
           }
         }
+      }
+    }
+  }
+`)
+
+export const PROJECT_SLUGS_QUERY = defineQuery(/* groq */ `
+  *[_type == "project" && defined(slug.current)]{
+    "slug": slug.current
+  }
+`)
+
+export const PROJECT_PAGE_QUERY = defineQuery(/* groq */ `
+  {
+    "project": *[_type == "project" && slug.current == $slug][0]{
+      _id,
+      title,
+      "slug": slug.current,
+      year,
+      summary,
+      liveDemoUrl,
+      repoUrl,
+      role,
+      tools,
+      seoDescription,
+      coverImage{
+        ${coverImageFields}
+      },
+      ogImage{
+        ${projectImageFields}
+      },
+      slides[]{
+        _key,
+        title,
+        body,
+        layout,
+        image{
+          ${projectImageFields},
+          alt,
+          caption
+        }
+      }
+    },
+    "settings": *[_id == "siteSettings"][0]{
+      siteTitle,
+      ogImage{
+        ${projectImageFields}
       }
     }
   }
