@@ -1,0 +1,67 @@
+.shelf {
+  min-width: 0;
+}
+
+.itemRow {
+  display: flex;
+  align-items: flex-end;
+  min-height: 290px;
+  gap: clamp(12px, 2vw, 28px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 34px 26px 0 7px;
+  scrollbar-color: var(--rule) transparent;
+  scrollbar-width: thin;
+  scroll-snap-type: x proximity;
+}
+
+.itemRow::-webkit-scrollbar {
+  height: 5px;
+}
+
+.itemRow::-webkit-scrollbar-thumb {
+  background: var(--rule);
+}
+
+.label {
+  padding-top: 28px;
+}
+
+.labelLine {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.label h2 {
+  margin: 0;
+  font-family: var(--font-deaetna), serif;
+  font-size: 0.96rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.labelLine span {
+  color: var(--ink-muted);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.label p {
+  margin: 0.45rem 0 0;
+  color: var(--ink-muted);
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .itemRow {
+    min-height: 204px;
+    margin-right: -20px;
+    padding-top: 25px;
+    padding-right: 34px;
+  }
+}

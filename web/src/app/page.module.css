@@ -1,0 +1,28 @@
+.page {
+  width: min(calc(100% - 64px), 1320px);
+  margin: 0 auto;
+}
+
+.shelves {
+  display: grid;
+  gap: clamp(7rem, 12vw, 11rem);
+  padding: 6vh 0 12vh;
+}
+
+.empty {
+  padding: 18vh 0;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+@media (max-width: 600px) {
+  .page {
+    width: calc(100% - 40px);
+  }
+
+  .shelves {
+    gap: 6rem;
+    padding-top: 4vh;
+    padding-bottom: 9vh;
+  }
+}
