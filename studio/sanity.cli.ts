@@ -5,6 +5,9 @@ export default defineCliConfig({
     projectId: '3scwu6mf',
     dataset: 'production',
   },
+  deployment: {
+    appId: 'odu9h2cz63vchmhqx1cbpcah',
+  },
   typegen: {
     enabled: true,
     path: '../web/src/**/*.{ts,tsx,js,jsx}',

@@ -11,3 +11,4 @@ coverage/
 
 # Local values only; no secrets are used in this project.
 .env.local
+.vercel
