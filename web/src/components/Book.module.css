@@ -3,7 +3,7 @@
   z-index: 1;
   display: block;
   flex: 0 0 auto;
-  width: clamp(94px, 9vw, 126px);
+  width: clamp(103.4px, 9.9vw, 138.6px);
   aspect-ratio: 2 / 3;
   border-radius: 2px;
   color: inherit;

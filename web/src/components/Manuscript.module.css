@@ -3,8 +3,8 @@
   z-index: 1;
   display: block;
   flex: 0 0 auto;
-  width: clamp(132px, 12vw, 174px);
-  height: clamp(92px, 8.5vw, 120px);
+  width: clamp(145.2px, 13.2vw, 191.4px);
+  height: clamp(101.2px, 9.35vw, 132px);
   color: var(--ink);
   scroll-snap-align: start;
   text-decoration: none;
