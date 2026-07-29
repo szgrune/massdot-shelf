@@ -78,6 +78,7 @@ export const slide = defineType({
           {title: 'Image right', value: 'image-right'},
           {title: 'Image left', value: 'image-left'},
           {title: 'Full image with text overlay', value: 'image-full'},
+          {title: 'Image only', value: 'image-only'},
           {title: 'Text only', value: 'text-only'},
         ],
         layout: 'radio',

@@ -263,6 +263,17 @@
     color: var(--ink);
   }
 
+  .imageOnly {
+    display: block;
+    overflow: hidden;
+  }
+
+  .imageOnly .image {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
+
   .imageFull .eyebrow,
   .imageFull .meta dt {
     color: var(--ink-muted);

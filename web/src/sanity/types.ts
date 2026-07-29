@@ -65,7 +65,7 @@ export type Slide = {
     _key: string
   }>
   image?: Figure
-  layout?: 'image-right' | 'image-left' | 'image-full' | 'text-only'
+  layout?: 'image-right' | 'image-left' | 'image-full' | 'image-only' | 'text-only'
 }
 
 export type SanityFileAssetReference = {
@@ -565,7 +565,7 @@ export type PROJECT_PAGE_QUERY_RESULT = {
         _type: 'block'
         _key: string
       }> | null
-      layout: 'image-full' | 'image-left' | 'image-right' | 'text-only' | null
+      layout: 'image-full' | 'image-left' | 'image-only' | 'image-right' | 'text-only' | null
       image: {
         asset: {
           _id: string
