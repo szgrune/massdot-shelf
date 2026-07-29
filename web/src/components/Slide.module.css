@@ -47,11 +47,12 @@
   height: 100%;
   margin: 0;
   overflow: hidden;
-  background: #ededeb;
+  background: transparent;
 }
 
 .image img {
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 .image figcaption {

@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import type {CSSProperties} from 'react'
 
 import type {PROJECT_PAGE_QUERY_RESULT} from '@/sanity/types'
 
@@ -32,12 +31,6 @@ export function Slide({
   const hasImage = Boolean(slide.image?.asset?.url)
   const layout = hasImage ? (slide.layout ?? 'image-right') : 'text-only'
   const isFirst = index === 0
-  const hotspot = slide.image?.hotspot
-  const imageStyle: CSSProperties | undefined = hotspot
-    ? {
-        objectPosition: `${hotspot.x * 100}% ${hotspot.y * 100}%`,
-      }
-    : undefined
 
   return (
     <article
@@ -112,7 +105,6 @@ export function Slide({
             alt={slide.image.alt}
             fill
             sizes={layout === 'image-full' ? '100vw' : '(max-width: 899px) 100vw, 55vw'}
-            style={imageStyle}
             placeholder={slide.image.asset.metadata?.lqip ? 'blur' : 'empty'}
             blurDataURL={slide.image.asset.metadata?.lqip ?? undefined}
           />
