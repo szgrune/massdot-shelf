@@ -18,6 +18,14 @@
   grid-template-areas: 'image text';
 }
 
+.intro.imageRight {
+  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
+}
+
+.intro.imageLeft {
+  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
+}
+
 .textOnly {
   display: block;
 }
