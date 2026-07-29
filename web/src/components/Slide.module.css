@@ -43,6 +43,8 @@
 .image {
   position: relative;
   grid-area: image;
+  display: grid;
+  place-items: center;
   min-width: 0;
   height: 100%;
   margin: 0;
@@ -50,7 +52,28 @@
   background: transparent;
 }
 
-.image img {
+.imageFrame {
+  position: relative;
+  width: 100%;
+}
+
+.imageFullSize {
+  height: 100%;
+}
+
+.imageLarge {
+  height: min(100%, 720px);
+}
+
+.imageMedium {
+  height: min(100%, 480px);
+}
+
+.imageSmall {
+  height: min(100%, 320px);
+}
+
+.imageFrame img {
   object-fit: contain;
   object-position: center;
 }

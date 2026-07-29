@@ -66,7 +66,7 @@ export const slide = defineType({
       name: 'image',
       type: 'figure',
       description:
-        'Optional slide image. Set its crop and focal point so it works in wide and stacked layouts.',
+        'Optional slide image. Choose a display size to keep lower-resolution images sharp.',
     }),
     defineField({
       name: 'layout',

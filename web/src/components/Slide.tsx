@@ -15,6 +15,13 @@ const layoutClasses = {
   'text-only': styles.textOnly,
 } as const
 
+const imageSizeClasses = {
+  full: styles.imageFullSize,
+  large: styles.imageLarge,
+  medium: styles.imageMedium,
+  small: styles.imageSmall,
+} as const
+
 export function Slide({
   project,
   slide,
@@ -30,6 +37,7 @@ export function Slide({
 }) {
   const hasImage = Boolean(slide.image?.asset?.url)
   const layout = hasImage ? (slide.layout ?? 'image-right') : 'text-only'
+  const imageSize = slide.image?.displaySize ?? 'full'
   const isFirst = index === 0
 
   return (
@@ -100,14 +108,16 @@ export function Slide({
 
       {hasImage && slide.image?.asset?.url ? (
         <figure className={styles.image}>
-          <Image
-            src={slide.image.asset.url}
-            alt={slide.image.alt}
-            fill
-            sizes={layout === 'image-full' ? '100vw' : '(max-width: 899px) 100vw, 55vw'}
-            placeholder={slide.image.asset.metadata?.lqip ? 'blur' : 'empty'}
-            blurDataURL={slide.image.asset.metadata?.lqip ?? undefined}
-          />
+          <div className={`${styles.imageFrame} ${imageSizeClasses[imageSize]}`}>
+            <Image
+              src={slide.image.asset.url}
+              alt={slide.image.alt}
+              fill
+              sizes={layout === 'image-full' ? '100vw' : '(max-width: 899px) 100vw, 55vw'}
+              placeholder={slide.image.asset.metadata?.lqip ? 'blur' : 'empty'}
+              blurDataURL={slide.image.asset.metadata?.lqip ?? undefined}
+            />
+          </div>
           {slide.image.caption ? <figcaption>{slide.image.caption}</figcaption> : null}
         </figure>
       ) : null}

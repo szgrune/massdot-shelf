@@ -123,7 +123,8 @@ export const PROJECT_PAGE_QUERY = defineQuery(/* groq */ `
         image{
           ${projectImageFields},
           alt,
-          caption
+          caption,
+          displaySize
         }
       }
     },
