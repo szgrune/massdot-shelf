@@ -36,7 +36,7 @@
   margin: auto;
 }
 
-.intro.textOnly .measure {
+.textOnly .measure {
   width: min(100%, calc(62ch + 10vw));
 }
 
