@@ -18,14 +18,6 @@
   grid-template-areas: 'image text';
 }
 
-.intro.imageRight {
-  grid-template-columns: minmax(0, 55fr) minmax(0, 45fr);
-}
-
-.intro.imageLeft {
-  grid-template-columns: minmax(0, 45fr) minmax(0, 55fr);
-}
-
 .textOnly {
   display: block;
 }
@@ -42,6 +34,10 @@
 .measure {
   width: min(100%, 62ch);
   margin: auto;
+}
+
+.intro.textOnly .measure {
+  width: min(100%, calc(62ch + 10vw));
 }
 
 .textOnly .text {

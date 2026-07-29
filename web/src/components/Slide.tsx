@@ -41,10 +41,9 @@ export function Slide({
   const imageSize = slide.image?.displaySize ?? 'full'
   const isFirst = index === 0
   const isImageOnly = layout === 'image-only'
-  const isSplitIntro = isFirst && (layout === 'image-right' || layout === 'image-left')
   const imageSizes = layout === 'image-full' || isImageOnly
     ? '100vw'
-    : `(max-width: 899px) 100vw, ${isSplitIntro ? '45vw' : '55vw'}`
+    : '(max-width: 899px) 100vw, 55vw'
 
   return (
     <article
