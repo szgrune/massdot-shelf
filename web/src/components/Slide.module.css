@@ -37,7 +37,7 @@
 }
 
 .intro.textOnly .measure {
-  width: min(100%, calc(62ch + 15vw));
+  width: min(100%, calc(62ch + 10vw));
 }
 
 .textOnly .text {
@@ -138,6 +138,10 @@
   font-weight: 400;
   letter-spacing: 0.015em;
   line-height: 0.98;
+}
+
+.intro.textOnly .projectIntro h1 {
+  max-width: none;
 }
 
 .lede {
