@@ -37,7 +37,7 @@
 }
 
 .intro.textOnly .measure {
-  width: min(100%, calc(62ch + 10vw));
+  width: min(100%, calc(62ch + 15vw));
 }
 
 .textOnly .text {
