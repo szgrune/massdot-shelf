@@ -30,6 +30,34 @@
   filter: blur(2px);
 }
 
+.comingSoon {
+  cursor: default;
+}
+
+.comingSoonMessage {
+  position: absolute;
+  z-index: 2;
+  bottom: calc(100% + 10px);
+  left: 50%;
+  padding: 5px 8px;
+  border: 1px solid var(--rule);
+  background: rgb(255 255 255 / 0.94);
+  color: var(--ink);
+  font-family: var(--font-noto-sans), sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  opacity: 0;
+  pointer-events: none;
+  text-transform: uppercase;
+  transform: translate(-50%, 4px);
+  transition:
+    opacity 180ms ease-out,
+    transform 180ms ease-out;
+  white-space: nowrap;
+}
+
 .sheet {
   position: absolute;
   inset: var(--sheet-top) var(--sheet-right) var(--sheet-bottom)
@@ -111,6 +139,12 @@
   transform: rotate(0deg);
 }
 
+.comingSoon:hover .comingSoonMessage,
+.comingSoon:focus-visible .comingSoonMessage {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
 .manuscript:focus-visible {
   outline: 2px solid var(--ink);
   outline-offset: 4px;
@@ -124,7 +158,8 @@
 
 @media (prefers-reduced-motion: reduce) {
   .manuscript,
-  .sheet {
+  .sheet,
+  .comingSoonMessage {
     transition: none;
   }
 

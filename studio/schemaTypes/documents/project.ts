@@ -48,6 +48,15 @@ export const project = defineType({
   ],
   fields: [
     defineField({
+      name: 'comingSoon',
+      title: 'Coming soon (stacked manuscripts only)',
+      type: 'boolean',
+      description:
+        'When checked, this manuscript keeps its shelf animation but cannot be opened and shows a “Coming soon...” message on hover.',
+      initialValue: true,
+      group: 'cover',
+    }),
+    defineField({
       name: 'title',
       type: 'string',
       description: 'The full project name used on its page and in Studio.',

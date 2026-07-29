@@ -75,6 +75,7 @@ export const SHELF_PAGE_QUERY = defineQuery(/* groq */ `
           _id,
           title,
           "slug": slug.current,
+          comingSoon,
           coverTitle,
           subtitle,
           year,
