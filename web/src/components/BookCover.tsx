@@ -27,6 +27,11 @@ export function BookCover({project}: {project: ShelfItemData}) {
           placeholder={lqip ? 'blur' : 'empty'}
           blurDataURL={lqip ?? undefined}
         />
+        {image.showTitleOverlay ? (
+          <span className={styles.uploadedTitle} aria-hidden="true">
+            {project.coverTitle ?? project.title}
+          </span>
+        ) : null}
       </div>
     )
   }

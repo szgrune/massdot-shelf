@@ -29,6 +29,7 @@ export type Cover = {
   hotspot?: SanityImageHotspot
   crop?: SanityImageCrop
   alt: string
+  showTitleOverlay?: boolean
 }
 
 export type Figure = {
@@ -396,7 +397,7 @@ export type SITE_METADATA_QUERY_RESULT =
 
 // Source: ../web/src/sanity/queries.ts
 // Variable: SHELF_PAGE_QUERY
-// Query: {    "settings": *[_id == "siteSettings"][0]{      siteTitle,      tagline,      intro,      colophon,      email,      githubUrl,      linkedinUrl    },    "shelves": *[_type == "shelf"] | order(order asc){      _id,      title,      "slug": slug.current,      caption,      itemStyle,      order,      items[]{        _key,        ...@->{          _id,          title,          "slug": slug.current,          comingSoon,          coverTitle,          subtitle,          year,          presentation,          clothColor,          coverMotif,          coverImage{              asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  alt,  crop,  hotspot          }        }      }    }  }
+// Query: {    "settings": *[_id == "siteSettings"][0]{      siteTitle,      tagline,      intro,      colophon,      email,      githubUrl,      linkedinUrl    },    "shelves": *[_type == "shelf"] | order(order asc){      _id,      title,      "slug": slug.current,      caption,      itemStyle,      order,      items[]{        _key,        ...@->{          _id,          title,          "slug": slug.current,          comingSoon,          coverTitle,          subtitle,          year,          presentation,          clothColor,          coverMotif,          coverImage{              asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  alt,  showTitleOverlay,  crop,  hotspot          }        }      }    }  }
 export type SHELF_PAGE_QUERY_RESULT = {
   settings:
     | {
@@ -465,6 +466,7 @@ export type SHELF_PAGE_QUERY_RESULT = {
           } | null
         } | null
         alt: string
+        showTitleOverlay: boolean | null
         crop: SanityImageCrop | null
         hotspot: SanityImageHotspot | null
       } | null
@@ -481,7 +483,7 @@ export type PROJECT_SLUGS_QUERY_RESULT = Array<{
 
 // Source: ../web/src/sanity/queries.ts
 // Variable: PROJECT_PAGE_QUERY
-// Query: {    "project": *[_type == "project" && slug.current == $slug][0]{      _id,      title,      "slug": slug.current,      year,      summary,      liveDemoUrl,      repoUrl,      role,      tools,      seoDescription,      coverImage{          asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  alt,  crop,  hotspot      },      ogImage{          asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  crop,  hotspot      },      slides[]{        _key,        title,        body,        layout,        image{            asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  crop,  hotspot,          alt,          caption,          displaySize        }      }    },    "settings": *[_id == "siteSettings"][0]{      siteTitle,      ogImage{          asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  crop,  hotspot      }    }  }
+// Query: {    "project": *[_type == "project" && slug.current == $slug][0]{      _id,      title,      "slug": slug.current,      year,      summary,      liveDemoUrl,      repoUrl,      role,      tools,      seoDescription,      coverImage{          asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  alt,  showTitleOverlay,  crop,  hotspot      },      ogImage{          asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  crop,  hotspot      },      slides[]{        _key,        title,        body,        layout,        image{            asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  crop,  hotspot,          alt,          caption,          displaySize        }      }    },    "settings": *[_id == "siteSettings"][0]{      siteTitle,      ogImage{          asset->{    _id,    url,    metadata {      lqip,      dimensions {        width,        height,        aspectRatio      }    }  },  crop,  hotspot      }    }  }
 export type PROJECT_PAGE_QUERY_RESULT = {
   project: {
     _id: string
@@ -526,6 +528,7 @@ export type PROJECT_PAGE_QUERY_RESULT = {
         } | null
       } | null
       alt: string
+      showTitleOverlay: boolean | null
       crop: SanityImageCrop | null
       hotspot: SanityImageHotspot | null
     } | null
@@ -640,8 +643,8 @@ import '@sanity/client'
 declare module '@sanity/client' {
   interface SanityQueries {
     '\n  *[_id == "siteSettings"][0]{\n    siteTitle,\n    tagline,\n    ogImage{\n      \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  crop,\n  hotspot\n\n    },\n    favicon{\n      asset->{\n        url,\n        mimeType\n      }\n    }\n  }\n': SITE_METADATA_QUERY_RESULT
-    '\n  {\n    "settings": *[_id == "siteSettings"][0]{\n      siteTitle,\n      tagline,\n      intro,\n      colophon,\n      email,\n      githubUrl,\n      linkedinUrl\n    },\n    "shelves": *[_type == "shelf"] | order(order asc){\n      _id,\n      title,\n      "slug": slug.current,\n      caption,\n      itemStyle,\n      order,\n      items[]{\n        _key,\n        ...@->{\n          _id,\n          title,\n          "slug": slug.current,\n          comingSoon,\n          coverTitle,\n          subtitle,\n          year,\n          presentation,\n          clothColor,\n          coverMotif,\n          coverImage{\n            \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  alt,\n  crop,\n  hotspot\n\n          }\n        }\n      }\n    }\n  }\n': SHELF_PAGE_QUERY_RESULT
+    '\n  {\n    "settings": *[_id == "siteSettings"][0]{\n      siteTitle,\n      tagline,\n      intro,\n      colophon,\n      email,\n      githubUrl,\n      linkedinUrl\n    },\n    "shelves": *[_type == "shelf"] | order(order asc){\n      _id,\n      title,\n      "slug": slug.current,\n      caption,\n      itemStyle,\n      order,\n      items[]{\n        _key,\n        ...@->{\n          _id,\n          title,\n          "slug": slug.current,\n          comingSoon,\n          coverTitle,\n          subtitle,\n          year,\n          presentation,\n          clothColor,\n          coverMotif,\n          coverImage{\n            \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  alt,\n  showTitleOverlay,\n  crop,\n  hotspot\n\n          }\n        }\n      }\n    }\n  }\n': SHELF_PAGE_QUERY_RESULT
     '\n  *[_type == "project" && defined(slug.current)]{\n    "slug": slug.current\n  }\n': PROJECT_SLUGS_QUERY_RESULT
-    '\n  {\n    "project": *[_type == "project" && slug.current == $slug][0]{\n      _id,\n      title,\n      "slug": slug.current,\n      year,\n      summary,\n      liveDemoUrl,\n      repoUrl,\n      role,\n      tools,\n      seoDescription,\n      coverImage{\n        \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  alt,\n  crop,\n  hotspot\n\n      },\n      ogImage{\n        \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  crop,\n  hotspot\n\n      },\n      slides[]{\n        _key,\n        title,\n        body,\n        layout,\n        image{\n          \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  crop,\n  hotspot\n,\n          alt,\n          caption,\n          displaySize\n        }\n      }\n    },\n    "settings": *[_id == "siteSettings"][0]{\n      siteTitle,\n      ogImage{\n        \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  crop,\n  hotspot\n\n      }\n    }\n  }\n': PROJECT_PAGE_QUERY_RESULT
+    '\n  {\n    "project": *[_type == "project" && slug.current == $slug][0]{\n      _id,\n      title,\n      "slug": slug.current,\n      year,\n      summary,\n      liveDemoUrl,\n      repoUrl,\n      role,\n      tools,\n      seoDescription,\n      coverImage{\n        \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  alt,\n  showTitleOverlay,\n  crop,\n  hotspot\n\n      },\n      ogImage{\n        \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  crop,\n  hotspot\n\n      },\n      slides[]{\n        _key,\n        title,\n        body,\n        layout,\n        image{\n          \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  crop,\n  hotspot\n,\n          alt,\n          caption,\n          displaySize\n        }\n      }\n    },\n    "settings": *[_id == "siteSettings"][0]{\n      siteTitle,\n      ogImage{\n        \n  asset->{\n    _id,\n    url,\n    metadata {\n      lqip,\n      dimensions {\n        width,\n        height,\n        aspectRatio\n      }\n    }\n  },\n  crop,\n  hotspot\n\n      }\n    }\n  }\n': PROJECT_PAGE_QUERY_RESULT
   }
 }

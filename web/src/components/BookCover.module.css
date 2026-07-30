@@ -35,6 +35,23 @@
   object-fit: cover;
 }
 
+.uploadedTitle {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 28% 10% 10%;
+  color: #fff;
+  font-family: var(--font-deaetna), serif;
+  font-size: 1rem;
+  line-height: 1.05;
+  text-align: center;
+  overflow-wrap: anywhere;
+  text-shadow: 0 1px 3px rgb(0 0 0 / 75%);
+  background: linear-gradient(to bottom, transparent, rgb(0 0 0 / 78%));
+}
+
 .titleBlock {
   position: relative;
   z-index: 1;
@@ -142,6 +159,10 @@
 }
 
 @media (max-width: 600px) {
+  .uploadedTitle {
+    font-size: 0.82rem;
+  }
+
   .title {
     font-size: 1.02rem;
   }

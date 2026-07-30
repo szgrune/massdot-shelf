@@ -15,5 +15,13 @@ export const cover = defineType({
       description: 'Describe the cover image for visitors who cannot see it.',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'showTitleOverlay',
+      title: 'Show title overlay',
+      type: 'boolean',
+      description:
+        'Show the cover title at the bottom of bound books that use this uploaded image.',
+      initialValue: false,
+    }),
   ],
 })

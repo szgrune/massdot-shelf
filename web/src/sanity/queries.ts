@@ -14,6 +14,7 @@ const coverImageFields = /* groq */ `
     }
   },
   alt,
+  showTitleOverlay,
   crop,
   hotspot
 `

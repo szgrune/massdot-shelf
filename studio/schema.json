@@ -79,6 +79,13 @@
             "type": "string"
           },
           "optional": false
+        },
+        "showTitleOverlay": {
+          "type": "objectAttribute",
+          "value": {
+            "type": "boolean"
+          },
+          "optional": true
         }
       }
     }
